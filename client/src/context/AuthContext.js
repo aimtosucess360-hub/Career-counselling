@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const AuthContext = createContext();
 
-axios.defaults.baseURL = 'http://localhost:5000';
+axios.defaults.baseURL = 'https://career-counselling-td40.onrender.com';
 
 export const AuthProvider = ({ children }) => {
   const [user,    setUser]    = useState(null);
