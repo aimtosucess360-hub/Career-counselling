@@ -110,7 +110,7 @@ const YouTube = () => {
   const [loading, setLoading]           = useState(true);
   const [featured, setFeatured]         = useState(null);
   const [activeCategory, setActiveCategory] = useState('All');
-  const [deleteId, setDeleteId]         = useState(null);
+
   const [refresh, setRefresh]           = useState(0);
 
   useEffect(() => {

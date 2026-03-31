@@ -14,7 +14,7 @@ const UserDashboard = () => {
   const { user } = useAuth();
   const [counsellingStatus, setCounsellingStatus] = useState(null);
   const [videos, setVideos]     = useState([]);
-  const [feedbacks, setFeedbacks] = useState([]);
+
   const [loadingData, setLoadingData] = useState(true);
 
   const pref    = prefInfo[user?.careerPreference] || {};
@@ -23,14 +23,13 @@ const UserDashboard = () => {
   useEffect(() => {
     const loadAll = async () => {
       try {
-        const [statusRes, videoRes, fbRes] = await Promise.all([
-          axios.get('/api/counselling/status'),
-          axios.get('/api/videos'),
-          axios.get('/api/feedback'),
+        const [statusRes, videoRes] = await Promise.all([
+        axios.get('/api/counselling/status'),
+        axios.get('/api/videos'),
         ]);
         setCounsellingStatus(statusRes.data);
         setVideos((videoRes.data.videos || []).slice(0, 3));
-        setFeedbacks((fbRes.data.feedbacks || []).slice(0, 2));
+        
       } catch { /* ignore */ }
       finally { setLoadingData(false); }
     };
