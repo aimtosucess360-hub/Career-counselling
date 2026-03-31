@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }) => {
 
   const fetchProfile = async () => {
     try {
-      const res = await axios.get('/api/user/profile');
+      const res = await axios.get('https://career-counselling-td40.onrender.com/api/user/profile');
       setUser(res.data.user);
     } catch {
       logout();

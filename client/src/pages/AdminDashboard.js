@@ -49,9 +49,9 @@ const AdminDashboard = () => {
     setLoading(true);
     try {
       const [dashRes, studRes, fbRes] = await Promise.all([
-        axios.get('/api/admin/dashboard'),
-        axios.get('/api/admin/students'),
-        axios.get('/api/admin/feedback'),
+        axios.get('https://career-counselling-td40.onrender.com/api/admin/dashboard'),
+        axios.get('https://career-counselling-td40.onrender.com/api/admin/students'),
+        axios.get('https://career-counselling-td40.onrender.com/api/admin/feedback'),
       ]);
       setStats(dashRes.data);
       setStudents(studRes.data.students || []);
@@ -66,7 +66,7 @@ const AdminDashboard = () => {
   /* Export CSV */
   const handleExport = async () => {
     try {
-      const res = await axios.get('/api/admin/students/export', { responseType: 'blob' });
+      const res = await axios.get('https://career-counselling-td40.onrender.com/api/admin/students/export', { responseType: 'blob' });
       const url = window.URL.createObjectURL(new Blob([res.data]));
       const a   = document.createElement('a');
       a.href = url; a.download = 'counselling_students.csv'; a.click();
@@ -77,7 +77,7 @@ const AdminDashboard = () => {
   /* Toggle feedback approval */
   const toggleFeedback = async (id) => {
     try {
-      const res = await axios.patch(`/api/admin/feedback/${id}`);
+      const res = await axios.patch(`https://career-counselling-td40.onrender.com/api/admin/feedback/${id}`);
       setFeedbacks(prev => prev.map(f => f._id === id ? res.data.feedback : f));
     } catch { alert('Failed to update.'); }
   };

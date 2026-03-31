@@ -35,7 +35,7 @@ const JoinCounselling = () => {
     if (!user) { setCheckLoading(false); return; }
     (async () => {
       try {
-        const res = await axios.get('/api/counselling/status');
+        const res = await axios.get('https://career-counselling-td40.onrender.com/api/counselling/status');
         setAlreadyJoined(res.data.joined);
       } catch { /* ignore */ }
       finally { setCheckLoading(false); }

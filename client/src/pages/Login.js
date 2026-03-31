@@ -43,7 +43,7 @@ const Login = () => {
 
     setLoading(true);
     try {
-      const res = await axios.post('/api/auth/login', {
+      const res = await axios.post('https://career-counselling-td40.onrender.com/api/auth/login', {
         email:    formData.email.trim(),
         password: formData.password,
       });
