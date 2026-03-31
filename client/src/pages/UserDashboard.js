@@ -24,8 +24,8 @@ const UserDashboard = () => {
     const loadAll = async () => {
       try {
         const [statusRes, videoRes] = await Promise.all([
-        axios.get('/api/counselling/status'),
-        axios.get('/api/videos'),
+        axios.get('https://career-counselling-td40.onrender.com/api/counselling/status'),
+        axios.get('https://career-counselling-td40.onrender.com/api/videos'),
         ]);
         setCounsellingStatus(statusRes.data);
         setVideos((videoRes.data.videos || []).slice(0, 3));
