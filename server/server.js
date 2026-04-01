@@ -8,7 +8,15 @@ connectDB();
 
 const app = express();
 
-app.use(cors({ origin: ['http://localhost:3000', 'career-counselling-cpbu.vercel.app'], credentials: true }));
+app.use(cors({
+  origin: [
+    'http://localhost:3000',
+    'https://career-counselling-vc9d.vercel.app'
+  ],
+  credentials: true
+}));
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
