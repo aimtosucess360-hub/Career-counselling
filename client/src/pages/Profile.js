@@ -38,7 +38,7 @@ const Profile = () => {
     if (!formData.name.trim()) { setErrorMsg('Name cannot be empty.'); return; }
     setLoading(true); setErrorMsg(''); setSuccessMsg('');
     try {
-      const res = await axios.put('https://career-counselling-td40.onrender.com/api/user/profile', formData);
+      const res = await axios.put('https://career-counselling-1.onrender.com/api/user/profile', formData);
       updateUser(res.data.user);
       setSuccessMsg('Profile updated successfully!');
       setEditing(false);

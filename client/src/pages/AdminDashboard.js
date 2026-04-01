@@ -49,9 +49,9 @@ const AdminDashboard = () => {
     setLoading(true);
     try {
       const [dashRes, studRes, fbRes] = await Promise.all([
-        axios.get('https://career-counselling-td40.onrender.com/api/admin/dashboard'),
-        axios.get('https://career-counselling-td40.onrender.com/api/admin/students'),
-        axios.get('https://career-counselling-td40.onrender.com/api/admin/feedback'),
+        axios.get('https://career-counselling-1.onrender.com/api/admin/dashboard'),
+        axios.get('https://career-counselling-1.onrender.com/api/admin/students'),
+        axios.get('https://career-counselling-1.onrender.com/api/admin/feedback'),
       ]);
       setStats(dashRes.data);
       setStudents(studRes.data.students || []);
@@ -66,7 +66,7 @@ const AdminDashboard = () => {
   /* Export CSV */
   const handleExport = async () => {
     try {
-      const res = await axios.get('https://career-counselling-td40.onrender.com/api/admin/students/export', { responseType: 'blob' });
+      const res = await axios.get('https://career-counselling-1.onrender.com/api/admin/students/export', { responseType: 'blob' });
       const url = window.URL.createObjectURL(new Blob([res.data]));
       const a   = document.createElement('a');
       a.href = url; a.download = 'counselling_students.csv'; a.click();
@@ -77,7 +77,7 @@ const AdminDashboard = () => {
   /* Toggle feedback approval */
   const toggleFeedback = async (id) => {
     try {
-      const res = await axios.patch(`https://career-counselling-td40.onrender.com/api/admin/feedback/${id}`);
+      const res = await axios.patch(`https://career-counselling-1.onrender.com/api/admin/feedback/${id}`);
       setFeedbacks(prev => prev.map(f => f._id === id ? res.data.feedback : f));
     } catch { alert('Failed to update.'); }
   };
@@ -86,7 +86,7 @@ const AdminDashboard = () => {
   const deleteFeedback = async (id) => {
     if (!window.confirm('Delete this feedback permanently?')) return;
     try {
-      await axios.delete(`/api/feedback/${id}`);
+      await axios.delete(`https://career-counselling-1.onrender.com/api/feedback/${id}`);
       setFeedbacks(prev => prev.filter(f => f._id !== id));
     } catch { alert('Failed to delete.'); }
   };

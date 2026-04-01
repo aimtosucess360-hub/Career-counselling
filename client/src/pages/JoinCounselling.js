@@ -35,7 +35,7 @@ const JoinCounselling = () => {
     if (!user) { setCheckLoading(false); return; }
     (async () => {
       try {
-        const res = await axios.get('https://career-counselling-td40.onrender.com/api/counselling/status');
+        const res = await axios.get('https://career-counselling-1.onrender.com/api/counselling/status');
         setAlreadyJoined(res.data.joined);
       } catch { /* ignore */ }
       finally { setCheckLoading(false); }
@@ -64,7 +64,7 @@ const JoinCounselling = () => {
 
     setLoading(true); setApiError('');
     try {
-      await axios.post('/api/counselling/join', form);
+      await axios.post('https://career-counselling-1.onrender.com/api/counselling/join', form);
       setSuccess(true);
       setAlreadyJoined(true);
     } catch (err) {

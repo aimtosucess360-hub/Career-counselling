@@ -38,7 +38,7 @@ const AdminAddVideoForm = ({ onAdded }) => {
     }
     setLoading(true);
     try {
-      await axios.post('https://career-counselling-td40.onrender.com/api/videos', form);
+      await axios.post('https://career-counselling-1.onrender.com', form); 
       setSuccess('Video added successfully!');
       setForm({ title: '', youtubeUrl: '', description: '', category: 'General', pinned: false });
       if (onAdded) onAdded();
@@ -117,7 +117,7 @@ const YouTube = () => {
     const fetchVideos = async () => {
       setLoading(true);
       try {
-        const res = await axios.get('https://career-counselling-td40.onrender.com/api/videos');
+        const res = await axios.get('https://career-counselling-1.onrender.com/api/videos');
         const vids = res.data.videos || [];
         setVideos(vids);
         if (vids.length > 0) setFeatured(vids[0]);
@@ -130,7 +130,7 @@ const YouTube = () => {
   const handleDelete = async (id) => {
     if (!window.confirm('Delete this video?')) return;
     try {
-      await axios.delete(`https://career-counselling-td40.onrender.com/api/videos/${id}`);
+      await axios.delete(`https://career-counselling-1.onrender.com/api/videos/${id}`);
       setRefresh(r => r + 1);
       if (featured?._id === id) setFeatured(null);
     } catch (err) { alert(err.response?.data?.message || 'Failed to delete.'); }
@@ -138,7 +138,7 @@ const YouTube = () => {
 
   const handlePin = async (id) => {
     try {
-      await axios.patch(`https://career-counselling-td40.onrender.com/api/videos/${id}/pin`);
+      await axios.patch(`https://career-counselling-1.onrender.com/api/videos/${id}/pin`);
       setRefresh(r => r + 1);
     } catch (err) { alert('Failed to pin/unpin.'); }
   };

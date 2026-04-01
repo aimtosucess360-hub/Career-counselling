@@ -66,7 +66,7 @@ const Register = () => {
 
     setLoading(true);
     try {
-      const res = await axios.post('https://career-counselling-td40.onrender.com/api/auth/register', {
+      const res = await axios.post('https://career-counselling-1.onrender.com/api/auth/register', {
         name:             formData.name.trim(),
         email:            formData.email.trim(),
         phone:            formData.phone.trim(),

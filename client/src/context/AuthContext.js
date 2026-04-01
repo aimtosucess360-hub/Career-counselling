@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const AuthContext = createContext();
 
-axios.defaults.baseURL = 'https://career-counselling-td40.onrender.com';
+axios.defaults.baseURL = 'https://career-counselling-1.onrender.com';
 
 export const AuthProvider = ({ children }) => {
   const [user,    setUser]    = useState(null);
@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }) => {
 
   const fetchProfile = async () => {
     try {
-      const res = await axios.get('https://career-counselling-td40.onrender.com/api/user/profile');
+      const res = await axios.get('https://career-counselling-1.onrender.com/api/user/profile');
       setUser(res.data.user);
     } catch {
       logout();

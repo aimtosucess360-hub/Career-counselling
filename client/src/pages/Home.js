@@ -96,7 +96,7 @@ const FeedbackForm = ({ onSubmitted }) => {
     if (message.trim().length < 10)    { setError('Feedback must be at least 10 characters.'); return; }
     setLoading(true);
     try {
-      await axios.post('https://career-counselling-td40.onrender.com/api/feedback', { rating, message });
+      await axios.post('https://career-counselling-1.onrender.com/api/feedback', { rating, message });
       setSuccess('Thank you! Your feedback has been submitted.');
       setRating(0); setMessage('');
       if (onSubmitted) onSubmitted();
@@ -174,7 +174,7 @@ const Home = () => {
     (async () => {
       try {
         setFbLoading(true);
-        const res = await axios.get('https://career-counselling-td40.onrender.com/api/feedback');
+        const res = await axios.get('https://career-counselling-1.onrender.com/api/feedback');
         setFeedbacks(res.data.feedbacks || []);
       } catch { setFeedbacks([]); }
       finally { setFbLoading(false); }
